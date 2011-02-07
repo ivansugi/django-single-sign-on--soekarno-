@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+{% block html_declare %}{% endblock %}
+	<link href="{{ STATIC_MEDIA_URL }}css/style.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="{{ STATIC_MEDIA_URL }}css/style.css" media="screen" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_MEDIA_URL }}fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_MEDIA_URL }}fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/openid.css" />
+  <!--<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>-->
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/openid-jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#various1").fancybox({
+				'titlePosition'		: 'none',
+				'transitionIn'		: 'elastic',
+				'transitionOut'		: 'elastic'
+			});
+		});
+	</script>
+    <script type="text/javascript">
+		$(document).ready(function() {
+			$("#various2").fancybox({
+				'titlePosition'		: 'none',
+				'transitionIn'		: 'elastic',
+				'transitionOut'		: 'elastic'
+			});
+		});
+	</script>
+    
+	<style type="text/css" media="screen">
+      
+      @import "{{ STATIC_MEDIA_URL }}uni-form/uni-form.css";
+ 
+    </style>
+    
+    <link href="{{ STATIC_MEDIA_URL }}uni-form/blue.uni-form.css" title="Default Style" media="screen" rel="stylesheet"/>
+</head>
+<body>
+  <div class="container topbar">
+		{% block topbar %}{% endblock %}	
+	</div>
+  
+{% block containers %}{% endblock %}
+
+{% block content %}{% endblock %}
+	
+{% block footer %}{% endblock %}	
+
+</body>
+</html>

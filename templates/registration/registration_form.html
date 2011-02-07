@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<form method="post" action="/profile/register/">
+{% csrf_token %}
+   
+  <p><label for="id_username">Username:</label> <input id="id_username" class="required" name="username" maxlength="30" type="text"></p>
+<p><label for="id_email">Email address:</label> <input id="id_email" class="required" name="email" maxlength="75" type="text"></p>
+<p><label for="id_password1">Password:</label> <input id="id_password1" class="required" name="password1" type="password"></p>
+<p><label for="id_password2">Password (again):</label> <input id="id_password2" class="required" name="password2" type="password"></p>
+
+  <input value="Submit" type="submit">
+
+
+</form>
+{% endblock %}
+
+{% block login %}
+
+{% endblock %}
+

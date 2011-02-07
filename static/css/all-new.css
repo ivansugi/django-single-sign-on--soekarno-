@@ -1,0 +1,136 @@
+body {
+	font: 14px/1.7 Helvetica, "Helvetica Neue", Arial, sans-serif;
+	color: #303030;
+	background: #fff;
+}
+
+/* new clearfix */
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+* html .clearfix			 { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+/*
+General
+*/
+
+/* Containers */
+
+.container {
+	width: 100%;
+}
+
+.wrapper, header, footer {
+	width: 978px;
+	margin: 0 auto;
+}
+
+.padding {
+	padding: 50px 0;
+}
+
+.container.gray {
+	background: #f0f0f0;
+}
+
+.wrapper article {
+	float: left;
+}
+
+.wrapper article.two {
+	width: 474px;
+}
+
+.wrapper article.left {
+	margin-right: 15px;
+}
+
+.wrapper article.right {
+	margin-left: 15px;
+}
+
+.block {
+	background: #f0f0f0;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-bottom: 30px;
+}
+
+.block .inner {
+	padding: 40px;
+}
+
+/* Typography */
+
+h1, h2 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 36px;
+	line-height: 1.2;
+}
+
+h2 {
+	font-size: 28px;
+	margin-bottom: 15px;
+}
+
+h3 {
+	font-size: 24px;
+	margin-bottom: 15px;
+}
+
+h4 {
+	font-size: 18px;
+	margin-bottom: 15px;
+}
+
+p {
+	margin-bottom: 15px;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-family: Georgia, serif;
+	font-style: italic;
+}
+
+/* Links */
+
+a {
+	text-decoration: underline;
+	color: #1f80a9;
+}
+
+
+/*
+Layout
+*/
+
+/* Topbar */
+
+.container.topbar {
+	padding: 10px 0;
+	background: #303030;
+	color: #fff;
+}
+
+.container.topbar a {
+	color: #fff;
+	font-weight: bold;
+}
+
+.container.topbar .wrapper {
+	text-align: right;
+}

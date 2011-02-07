@@ -1,0 +1,164 @@
+{% extends "site_base.html" %}
+
+{% block containers %}
+<script type="text/javascript">
+		function sendRunkeeper() {
+            //alert ("hello");
+            var pass = $("#passwordRunkeeper").val();
+             $('#error_runkeeper').replaceWith('<div id="error_runkeeper">sending data</div>');
+            //alert (pass);
+            var user = $("#usernameRunkeeper").val();
+            //alert (user);
+            $.ajax({
+                type : "POST",
+                data :"id_runkeeper-username="+user+"&id_runkeeper-password="+pass,
+                url :"/credentials/runkeepersave/",
+                success : function(resp){
+                    
+                    $('#error_runkeeper').replaceWith('<div id="error_runkeeper">'+ resp +'</div>');
+                    if (resp == "success") {
+                        setTimeout('fancybox_close()', 3000);
+                    }
+                    return false;
+                }
+            })
+        } 
+        function sendRegister() {
+            //alert ("hello");
+            var pass = $("#password").val();
+            //alert (pass);
+            $('#error_register').replaceWith('<div id="error_register">sending data</div>');
+            var user = $("#username").val();
+            var email = $("#email").val();
+            
+           
+            //alert (user);
+            $.ajax({
+                type : "POST",
+                data :"username="+user+"&password="+pass+"&email="+email,
+                url :"/dashbody/register/",
+                success : function(resp){
+                    
+                    //<a id="various1" href="#register">Register</a>
+                    $('#error_register').replaceWith('<div id="error_register">'+ resp +'</div>');
+                    if (resp == "user has been created") {
+                        $('#login').replaceWith('<div class="wrapper" id ="login"> <a href="/credential/logout/" title="Sign in">logout</a></div>');
+                        $('#various1').replaceWith('<a id="various1" href="#">Registered</a>');
+                        setTimeout('fancybox_close()', 3000);
+                        
+                        
+
+                    }
+                    return false;
+                }
+            })
+//            $.post("/credentials/runkeepersave/", { id_nikeplus-username: user, id_nikeplus-password: pass }, function(data){
+//                alert("Data Loaded: " + data);
+//            });
+        }
+        function fancybox_close(){
+            $('#fancybox-wrap').hide();
+            $('#fancybox-overlay').hide();
+        }
+
+	</script>
+
+	<div class="container padding">
+		<div class="wrapper clearfix center" id="linked-social">
+			<b class="or or-one">or</b>
+			<b class="or or-two">or</b>
+			<h2>1. Setup an account</h2>
+			<article class="left">
+                
+				<h3>Create an account</h3>
+				<div style="display: none;">
+					<div id="register" style="width:400px;height:381px;overflow:auto;">
+						<form class="uniForm">
+                          
+					      <fieldset class="inlineLabels">
+					        <h3>Create an account</h3>
+                            <div id="error_register"> </div>
+					        <div class="ctrlHolder">
+					          <label>username</label>
+					          <input id = "username" type="text" class="textInput medium"/>
+					        </div>
+					        <div class="ctrlHolder">
+					          <label>password</label>
+					          <input id = "password" type="password" class="textInput medium error"/>
+					        </div>
+							<div class="ctrlHolder">
+					          <label>e-mail</label>
+					          <input id = "email" type="email" class="textInput medium error"/>
+					        </div>
+					      <div class="buttonHolder">
+					        <button type="button" class="primaryAction" onClick = "sendRegister()">Create</button>
+					      </div>
+					    </form>
+					</div>
+					
+				</div>
+				<a id="various1" href="#register">Register</a>		
+			</article>
+			<article class="middle">
+				<h3>Connect via Twitter</h3>
+				<form  action="/accounts/twitter_login/" class="content clearfix" method="post">{% csrf_token %}
+					<input class="connect twitter" name="commit" type="submit" value="Connect with Twitter" />
+				</form>		
+			</article>
+			<article class="right">
+				<h3>Connect via Facebook</h3>
+				<form  action="/accounts/facebook_login/" class="content clearfix" method="post">{% csrf_token %}
+					<input class="connect facebook" name="commit" type="submit" value="Connect with Facebook" />
+				</form>		
+			</article>
+		</div>
+	</div>
+	
+	<div class="container padding">
+		<div class="wrapper clearfix center">
+			<h2>2. Connect your activity devices</h2>
+			<article class="left">
+				
+				<h3>Runkeeper</h3>
+				<div style="display: none;">
+					<div id="runkeeper" style="width:400px;height:281px;overflow:auto;">
+						<form class="uniForm">
+					      <fieldset class="inlineLabels">
+                            
+					        <h3>Runkeeper account</h3>
+                             <div id="error_runkeeper"> </div>
+					        <div class="ctrlHolder">
+					          <label>username</label>
+					          <input id = "usernameRunkeeper" type="text" class="textInput medium"/>
+					        </div>
+
+					        <div class="ctrlHolder error" id="error1">
+					          <label>password</label>
+					          <input id = "passwordRunkeeper" type="password" class="textInput medium error"/>
+					        </div>
+
+					      <div class="buttonHolder">
+					        <button type="button" class="primaryAction" onClick = "sendRunkeeper()">Submit</button>
+					      </div>
+					    </form>
+					    
+					</div>
+				</div>
+				<a id="various2" href="#runkeeper"> Runkeeper</a>
+					
+			</article>
+			<article class="right">
+				<h3>Garmin</h3>
+				<form  action="/accounts/facebook_login/" class="content clearfix" method="post">{% csrf_token %}
+					<input class="connect facebook" name="commit" type="submit" value="Connect with Facebook" />
+				</form>		
+			</article>
+			<article class="left">
+				<h3>Nike+</h3>
+				<form  action="/accounts/twitter_login/" class="content clearfix" method="post">{% csrf_token %}
+					<input class="connect twitter" name="commit" type="submit" value="Connect with Twitter" />
+				</form>		
+			</article>
+		</div>
+	</div>
+{% endblock %}	
